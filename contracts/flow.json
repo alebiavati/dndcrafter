@@ -1,0 +1,34 @@
+{
+  "emulators": {
+    "default": {
+      "port": 3569,
+      "serviceAccount": "emulator-account"
+    }
+  },
+  "networks": {
+    "testnet": "access.testnet.nodes.onflow.org:9000",
+    "emulator": {
+      "host": "127.0.0.1:3569",
+      "chain": "flow-emulator"
+    }
+  },
+  "accounts": {
+    "testnet-account": {
+      "fromFile": "./flow.testnet.json"
+    },
+    "emulator-account": {
+      "address": "0x144d7ac0a2a05b23",
+      "keys": "dcc5591a134eb73e6c7b647c6a2ca55c312b916d1839e6ae73168264497f7bd4",
+      "chain": "flow-emulator"
+    }
+  },
+  "contracts": {
+    "GoldToken": "./cadence/contracts/GoldToken.cdc",
+    "Profile": "./cadence/contracts/GoldToken.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "testnet-account": ["GoldToken"]
+    }
+  }
+}
