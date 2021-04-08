@@ -1,0 +1,13 @@
+{
+  "name": "wallet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "fcl-wallet",
+    "start2": "PORT=8071 fcl-wallet"
+  },
+  "dependencies": {
+    "@onflow/dev-wallet": "^0.0.10"
+  }
+}

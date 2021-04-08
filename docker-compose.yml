@@ -1,0 +1,34 @@
+version: '3.6'
+
+services:
+  flow:
+    image: tilt.dev/flow
+    volumes:
+      - flowdb:/flowdb
+    environment:
+      FLOW_VERBOSE: 'true'
+      FLOW_PORT: 3569
+      FLOW_INTERVAL: 2s
+      FLOW_PERSIST: 'true'
+      FLOW_DBPATH: /flowdb
+    ports:
+      - 8080:8080
+      - 3569:3569
+
+  wallet:
+    image: tilt.dev/wallet
+    depends_on:
+      - flow
+    ports:
+      - 8700:8700
+    environment:
+      ACCESS_NODE: http://flow:8080
+
+  client:
+    image: tilt.dev/client
+    ports:
+      - 3000:3000
+
+
+volumes:
+  flowdb: {}

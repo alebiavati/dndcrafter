@@ -4,7 +4,7 @@ import * as fcl from "@onflow/fcl";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUser } from "../features/auth/reducer";
-import { fetchGold } from "../features/gold/reducer";
+// import { fetchGold } from "../features/gold/reducer";
 import { fetchProfile, selectProfile } from "../features/profile/reducer";
 
 export function AuthProvider({ children }) {
@@ -12,9 +12,10 @@ export function AuthProvider({ children }) {
   useEffect(
     () =>
       fcl.currentUser().subscribe((user) => {
+        console.log(user);
         if (user.addr) {
           dispatch(fetchProfile(user.addr));
-          dispatch(fetchGold(user.addr));
+          // dispatch(fetchGold(user.addr));
         }
 
         dispatch(setUser(user));

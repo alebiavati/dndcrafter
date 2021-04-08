@@ -1,0 +1,37 @@
+{
+  "emulators": {
+    "default": {
+      "port": 3569,
+      "serviceAccount": "service"
+    }
+  },
+  "networks": {
+    "emulator": {
+      "host": "127.0.0.1:3569"
+    }
+  },
+  "accounts": {
+    "service": {
+      "address": "144d7ac0a2a05b23",
+      "keys": "dcc5591a134eb73e6c7b647c6a2ca55c312b916d1839e6ae73168264497f7bd4",
+      "sigAlgorithm": "ECDSA_P256",
+      "hashAlgorithm": "SHA3_256",
+      "chain": "flow-emulator"
+    }
+  },
+  "contracts": {
+    "GoldToken": "./cadence/contracts/GoldToken.cdc",
+    "Profile": "./cadence/contracts/Profile.cdc"
+  },
+  "deployments": {
+    "emulator": {
+      "service": ["GoldToken", "Profile"]
+    }
+  },
+  "devWallet": {
+    "accessNode": {
+      "endpoint": "http://localhost:8080"
+    },
+    "port": 8700
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "emulators": {
+    "default": {
+      "port": 3569,
+      "serviceAccount": "root"
+    }
+  },
+  "networks": {
+    "emulator": {
+      "host": "127.0.0.1:3569",
+      "chain": "flow-emulator"
+    }
+  },
+  "accounts": {
+    "root": {
+      "address": "0000000000000000000000000000000000000001",
+      "privateKey": "$FLOW_SERVICEPUBLICKEY"
+    }
+  },
+  "contracts": {
+    "GoldToken": "./cadence/contracts/GoldToken.cdc",
+    "Profile": "./cadence/contracts/Profile.cdc"
+  },
+  "deployments": {
+    "emulator": {
+      "root": ["GoldToken", "Profile"]
+    }
+  }
+}

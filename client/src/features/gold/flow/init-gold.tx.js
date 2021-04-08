@@ -30,10 +30,10 @@ export async function initGoldTx() {
           }
 
           post {
-            // // Check that the capabilities were created correctly
-            // // by getting the public capability and checking
-            // // that it points to a valid 'Vault' object
-            // // that implements the 'Receiver' interface
+            // Check that the capabilities were created correctly
+            // by getting the public capability and checking
+            // that it points to a valid 'Vault' object
+            // that implements the 'Receiver' interface
             // getAccount(self.address).getCapability<&GoldToken.Vault{GoldToken.Receiver}>(/public/MainReceiver)
             //   .check():
             //   "Vault Receiver Reference was not created correctly"

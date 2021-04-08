@@ -5,10 +5,10 @@ import {
 } from "@reduxjs/toolkit";
 import { setUser } from "../auth/reducer";
 import { fetchGoldScript } from "./flow/fetch-gold.script";
-import { initGoldTx } from "./flow/init-gold.tx";
+// import { initGoldTx } from "./flow/init-gold.tx";
 
 export const fetchGold = createAsyncThunk("gold/fetch", async (address) => {
-  await initGoldTx(address);
+  // await initGoldTx(address);
   return await fetchGoldScript(address);
 });
 

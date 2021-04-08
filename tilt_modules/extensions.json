@@ -1,0 +1,9 @@
+{
+  "Extensions": [
+    {
+      "Name": "secret",
+      "ExtensionRegistry": "https://github.com/tilt-dev/tilt-extensions",
+      "TimeFetched": "2021-04-07T08:27:24.712374-07:00"
+    }
+  ]
+}
