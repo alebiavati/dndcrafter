@@ -2,69 +2,75 @@ import {
   createAsyncThunk,
   createDraftSafeSelector,
   createSlice,
-} from '@reduxjs/toolkit';
-import { setUser, selectUserAddress } from '../auth/reducer';
-import { fetchProfileScript } from './flow/fetch-profile.script';
-import { initProfileTx } from './flow/init-profile.tx';
-import { isProfileInitializedScript } from './flow/is-profile-initialized.script';
-import { setProfileNameTx } from './flow/profile-set-name.tx';
+} from "@reduxjs/toolkit";
+import { setUser, selectUserAddress } from "../auth/reducer";
+import { fetchProfileScript } from "./flow/fetch-profile.script";
+import { initProfileTx } from "./flow/init-profile.tx";
+import { isProfileInitializedScript } from "./flow/is-profile-initialized.script";
+import { setProfileNameTx } from "./flow/profile-set-name.tx";
 
 export const fetchProfile = createAsyncThunk(
-  'profile/fetch',
-  async (address) => {
+  "profile/fetch",
+  async (_, thunk) => {
+    const address = selectUserAddress(thunk.getState());
     const initialized = await isProfileInitializedScript(address);
     if (!initialized) {
-      const result = await initProfileTx();
-      console.log(result);
+      return { name: "" };
     }
     return await fetchProfileScript(address);
   }
 );
 
 export const setProfileName = createAsyncThunk(
-  'profile/setName',
+  "profile/setName",
   async (name, thunk) => {
-    await setProfileNameTx(name);
-    return await fetchProfileScript(selectUserAddress(thunk.getState()));
+    const address = selectUserAddress(thunk.getState());
+    const initialized = await isProfileInitializedScript(address);
+    if (initialized) {
+      await setProfileNameTx(name);
+    } else {
+      await initProfileTx(name);
+    }
+    return await fetchProfileScript(address);
   }
 );
 
 const initialState = {
-  status: 'idle',
+  status: "idle",
   loadCount: 0,
   profile: null,
   updating: null,
 };
 
 const profileSlice = createSlice({
-  name: 'profile',
+  name: "profile",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProfile.pending, (state) => {
-      state.status = 'pending';
+      state.status = "pending";
       state.error = undefined;
     });
     builder.addCase(fetchProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
-      state.status = 'loaded';
+      state.status = "loaded";
       state.loadCount += 1;
       state.error = undefined;
     });
     builder.addCase(fetchProfile.rejected, (state, action) => {
       state.profile = null;
-      state.status = 'error';
+      state.status = "error";
       state.error = action.error.message;
     });
     builder.addCase(setProfileName.pending, (state) => {
-      state.status = 'updating';
+      state.status = "updating";
     });
     builder.addCase(setProfileName.fulfilled, (state, action) => {
-      state.status = 'loaded';
+      state.status = "loaded";
       state.profile = action.payload;
     });
     builder.addCase(setProfileName.rejected, (state, action) => {
-      state.status = 'error';
+      state.status = "error";
       state.error = action.error.message;
     });
     builder.addCase(setUser, (state) => {
@@ -97,7 +103,7 @@ export const selectLoadCount = createDraftSafeSelector(
 
 export const selectProfileUpdating = createDraftSafeSelector(
   selectSelf,
-  (state) => state.status === 'updating'
+  (state) => state.status === "updating"
 );
 
 export default profileSlice.reducer;

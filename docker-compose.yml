@@ -11,6 +11,8 @@ services:
       FLOW_INTERVAL: 2s
       FLOW_PERSIST: 'true'
       FLOW_DBPATH: /flowdb
+      FLOW_ADDRESS: ${FLOW_ADDRESS:-f8d6e0586b0a20c7}
+      FLOW_PRIVATE_KEY: ${FLOW_PRIVATE_KEY:-f2039ac0e7bc911f937b1c2ad1f252a32456009be4cb812e93e90c873b17cf49}
     ports:
       - 8080:8080
       - 3569:3569
@@ -22,12 +24,21 @@ services:
     ports:
       - 8700:8700
     environment:
+      SERVICE_ADDR: ${FLOW_ADDRESS:-f8d6e0586b0a20c7}
+      PK: ${FLOW_PRIVATE_KEY:-f2039ac0e7bc911f937b1c2ad1f252a32456009be4cb812e93e90c873b17cf49}
       ACCESS_NODE: http://flow:8080
+      PORT: 8700
 
   client:
     image: tilt.dev/client
     ports:
       - 3000:3000
+    environment:
+      REACT_APP_ACCESS_NODE: http://localhost:8080
+      REACT_APP_WALLET_DISCOVERY: http://localhost:8700/flow/authenticate
+      REACT_APP_CONTRACT_GOLD: ${FLOW_ADDRESS:-f8d6e0586b0a20c7}
+      REACT_APP_CONTRACT_MATERIALS: ${FLOW_ADDRESS:-f8d6e0586b0a20c7}
+      REACT_APP_CONTRACT_PROFILE: ${FLOW_ADDRESS:-f8d6e0586b0a20c7}
 
 
 volumes:

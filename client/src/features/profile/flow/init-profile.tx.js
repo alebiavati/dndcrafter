@@ -1,6 +1,7 @@
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
 
-export async function initProfileTx() {
+export async function initProfileTx(name = "") {
   const txId = await fcl
     .send([
       // Transactions use fcl.transaction instead of fcl.script
@@ -8,7 +9,7 @@ export async function initProfileTx() {
       fcl.transaction`
         import Profile from 0xProfile
 
-        transaction {
+        transaction(name: String) {
           // We want the account's address for later so we can verify if the account was initialized properly
           let address: Address
 
@@ -24,6 +25,10 @@ export async function initProfileTx() {
               // This creates the public capability that lets applications read the profile's info
               account.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
             }
+
+            account
+              .borrow<&Profile.Base{Profile.Owner}>(from: Profile.privatePath)!
+              .setName(name)
           }
 
           // verify that the account has been initialized
@@ -36,6 +41,7 @@ export async function initProfileTx() {
       fcl.proposer(fcl.authz), // current user acting as the nonce
       fcl.authorizations([fcl.authz]), // current user will be first AuthAccount
       fcl.limit(35), // set the compute limit
+      fcl.args([fcl.arg(name, t.String)]),
     ])
     .then(fcl.decode);
 

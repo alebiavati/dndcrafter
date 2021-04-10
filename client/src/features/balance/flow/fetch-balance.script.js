@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl";
 import * as t from "@onflow/types";
 
-export async function fetchGoldScript(address) {
+export async function fetchBalanceScript(address) {
   if (address == null) return null;
 
   return fcl
@@ -9,13 +9,13 @@ export async function fetchGoldScript(address) {
       fcl.script`
         import GoldToken from 0xGoldToken
 
-        pub fun main(address: Address) {
+        pub fun main(address: Address): UFix64? {
           let acct = getAccount(address)
-          let acctReceiverRef = acct1.getCapability<&ExampleToken.Vault{ExampleToken.Balance}>(/public/MainReceiver)
+          let acctReceiverRef = acct.getCapability<&GoldToken.Vault{GoldToken.Balance}>(/public/MainReceiver)
               .borrow()
-              ?? panic("Could not borrow a reference to the acct1 receiver")
+              ?? panic("Could not borrow a reference to the acct receiver")
 
-          return acct1ReceiverRef.balance
+          return acctReceiverRef.balance
         }
       `,
       fcl.args([fcl.arg(address, t.Address)]),

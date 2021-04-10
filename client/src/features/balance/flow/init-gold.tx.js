@@ -1,6 +1,7 @@
 import * as fcl from "@onflow/fcl";
 
 export async function initGoldTx() {
+  console.log(fcl.authz);
   const txId = await fcl
     .send([
       // Transactions use fcl.transaction instead of fcl.script
@@ -15,29 +16,29 @@ export async function initGoldTx() {
         transaction {
           let address: Address
 
-          prepare(acct: AuthAccount) {
-            // save the address for the post check
-            self.address = acct.address
+          prepare(account: AuthAccount) {
+            self.address = account.address
 
-            // Create a link to the Vault in storage that is restricted to the
-            // fields and functions in 'Receiver' and 'Balance' interfaces,
-            // this only exposes the balance field
-            // and deposit function of the underlying vault.
-            //
-            acct.link<&GoldToken.Vault{GoldToken.Receiver, GoldToken.Balance}>(/public/MainReceiver, target: /storage/MainVault)
+            // Create a new empty Vault object
+            let vaultA <- GoldToken.createEmptyVault()
 
-            log("Public Receiver reference created!")
+            // Store the vault in the account storage
+            account.save<@GoldToken.Vault>(<-vaultA, to: /storage/MainVault)
+
+            log("Empty Vault stored")
+
+            // Create a public Receiver capability to the Vault
+            let ReceiverRef = account.link<&GoldToken.Vault{GoldToken.Receiver, GoldToken.Balance}>(/public/MainReceiver, target: /storage/MainVault)
+
+            log("References created")
           }
 
           post {
             // Check that the capabilities were created correctly
-            // by getting the public capability and checking
-            // that it points to a valid 'Vault' object
-            // that implements the 'Receiver' interface
-            // getAccount(self.address).getCapability<&GoldToken.Vault{GoldToken.Receiver}>(/public/MainReceiver)
-            //   .check():
-            //   "Vault Receiver Reference was not created correctly"
-            // }
+            getAccount(self.address).getCapability<&GoldToken.Vault{GoldToken.Receiver}>(/public/MainReceiver)
+              .check():
+              "Vault Receiver Reference was not created correctly"
+            }
         }
 
       `,

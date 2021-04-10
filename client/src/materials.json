@@ -1,0 +1,207 @@
+[
+  {
+    "name": "Bone",
+    "type": "creature",
+    "description": "A series of bones joined together, mostly used by shamans and wildlings.",
+    "value": "unknown",
+    "armor": "Replaces the metal. While wearing a medium or heavy armor (non hide) made with bones, you gain a +3 bonus to Charisma (Intimidation) checks you make.",
+    "weapon": "Replaces the metal and wood."
+  },
+  {
+    "name": "Chitin",
+    "type": "creature",
+    "description": "These flexible shells of chitinous creatures such as giant crabs or remorhaz are used to craft armors, known to be lighter than metallic armors.",
+    "value": "unknown",
+    "armor": "Replaces the metal. While wearing a medium armor (non hide) made with chitin, the armor's dexterity bonus increases by 1. Heavy armors made with chitin reduce the Strength requirement by 1."
+  },
+  {
+    "name": "Creature Essence",
+    "type": "creature",
+    "description": "All creatures are different, but they're grouped up in types which determines their fundamental nature.",
+    "value": "unknown",
+    "weapon": "Can be used to craft specific slaying weapons such as an arrow of dragon slaying.",
+    "other": "Can be used to craft specific potions, alchemical concoctions, and magic items such as a brazier of commanding fire elementals."
+  },
+  {
+    "name": "Ellond Hide",
+    "type": "creature",
+    "description": "This brown-orange hide is harvested from desert and dry areas creatures.",
+    "value": "unknown",
+    "armor": "While wearing clothing or a hide armor made with ellond hide, fire damage you take is reduced by 3. Harvested ellond hide from a CR 9 or higher creature can be used to craft a hide armor of fire resistance."
+  },
+  {
+    "name": "Monster Feathers",
+    "type": "creature",
+    "description": "Hippogriffs, Rocs, giant eagles and other flying creatures have beautiful feathers used to show their majesty.",
+    "value": "unknown",
+    "armor": "While wearing clothing or any non-metallic armor made with monster feathers, you gain a +3 bonus to Wisdom (Animal Handling) checks you make.",
+    "other": "Harvested monster feathers from a CR 9 or higher creature can be used to craft a Quaal's feather token."
+  },
+  {
+    "name": "Monster Scales",
+    "type": "creature",
+    "description": "Scales harvested from creatures, with a variety of colors, shapes and sizes.",
+    "value": "unknown",
+    "armor": "Replaces the metal. Used to craft a scale mail armor. Harvested monster scales from a CR 13 or higher dragon can be used to craft a dragon scale mail."
+  },
+  {
+    "name": "Shadowsilk",
+    "type": "creature",
+    "description": "This black semi-transparent silk is carefully made by underground spiders and spider-like creatures.",
+    "value": "unknown",
+    "armor": "While wearing clothing or any non-metallic armor made with shadowsilk, you gain a +3 bonus to Dexterity (Stealth) checks you make in lightly obscured areas (such as tree shadows). Harvested shadowsilk from a CR 13 or higher creature can be used to craft a cloak of arachnida."
+  },
+  {
+    "name": "Adamantine",
+    "type": "mineral",
+    "description": "A shiny black metal, known as one of the hardest substances in existence.",
+    "value": "250",
+    "armor": "Used to craft the adamantine armor.",
+    "weapon": "When you hit an object with an adamantine weapon or piece of ammunition, the hit is a critical hit."
+  },
+  {
+    "name": "Asmoroch Steel",
+    "type": "mineral",
+    "description": "A black scorched-like metal which is cold to touch.",
+    "value": "500",
+    "armor": "Used to craft an armor of necrotic resistance (metallic armor only)",
+    "weapon": "Used to craft necrotic damage dealing weapons, such as the sword of life stealing."
+  },
+  {
+    "name": "Cold Iron",
+    "type": "mineral",
+    "description": "This iron is worked entirely while cold, known for its effectiveness against fey and demonic creatures.",
+    "value": "100",
+    "weapons": "When you hit a fey or a fiend with a cold iron weapon, you can roll the damage again and use either result."
+  },
+  {
+    "name": "Darksteel",
+    "type": "mineral",
+    "description": "A darkened blue metal that only forms in areas affected by thunderstorms, known for having that energy inside of it.",
+    "value": "250",
+    "armor": "Used to craft an armor of lightning resistance (metallic armor only).",
+    "weapons": "Used to craft lightning damage dealing weapons, such as the javelin of lightning.",
+    "other": "Used to craft lightning damage dealing magic items, such as the wand of lightning bolt."
+  },
+  {
+    "name": "Dwarvenstone",
+    "type": "mineral",
+    "description": "This marble-like ore is used by dwarves to create their ceremonial armor for the defenders of their cities, even though is heavier and bulkier than other metallic armors.",
+    "value": "500",
+    "armor": "Used to craft a dwarven plate."
+  },
+  {
+    "name": "Infernal Steel",
+    "type": "mineral",
+    "description": "A blood red metal found in the infernal planes which is very resistant and captures the hot and flames.",
+    "value": "750",
+    "armor": "Used to craft an armor of fire resistance (metallic armor only) or a demon armor.",
+    "weapon": "Used to craft fire damage dealing weapons, such as the flame tongue.",
+    "other": "Used to craft fire damage dealing magic items, such as the staff of fire."
+  },
+  {
+    "name": "Mitrhal",
+    "type": "mineral",
+    "description": "This white-silver metal is lighter and flexible than common steel.",
+    "value": "250",
+    "armor": "Used to craft the mithral armor.",
+    "weapon": "Two handed weapons made with mithral lose the heavy property and all the other weapons gain the light feature."
+  },
+  {
+    "name": "Orichalcum",
+    "type": "mineral",
+    "description": "This bronze orange metal is used to absorb the essence of magic.",
+    "value": "500",
+    "armor": "Used to craft an armor of force resistance (metallic armor only).",
+    "other": "Used to craft anti-magic items, such as the ring of mind shielding."
+  },
+  {
+    "name": "Plaguesteel",
+    "type": "mineral",
+    "description": "This ancient mossy-like metal has small spores floating around it.",
+    "value": "250",
+    "weapon": "Used to craft poison damage dealing weapons, such as the dagger of venom.",
+    "other": "Used to craft poison damage dealing magic items, such as the staff of the adder."
+  },
+  {
+    "name": "Stellar Iron",
+    "type": "mineral",
+    "description": "A white bright metal, soft on touch but very resistant, known for being used by celestial beings.",
+    "value": "750",
+    "armor": "Used to craft an armor of radiant resistance (metallic armor only).",
+    "weapon": "Used to craft radiant damage dealing weapons, such as the sun blade."
+  },
+  {
+    "name": "Aerocrystal",
+    "type": "non-mineral",
+    "description": "A light blue, glass-like crystal known for creating quick, precise weapons.",
+    "value": "500",
+    "weapon": "You can use your Dexterity modifier for attacks and damage made with an aerocrystal weapon."
+  },
+  {
+    "name": "Coral",
+    "type": "non-mineral",
+    "description": "Mostly used by sea and waterborne creatures to create their weapons and armors.",
+    "value": "100",
+    "armor": "Replaces the metal. While wearing a medium or heavy armor (non hide) made with coral, you speed while swimming increases by 10 feet.",
+    "weapons": "Any melee weapon made with coral doesn't have disadvantage on the attacks rolls while underwater."
+  },
+  {
+    "name": "Darkwood",
+    "type": "non-mineral",
+    "description": "This piece of wood is as hard as normal wood but very light.",
+    "value": "100",
+    "armor": "Replaces the metal of any medium or heavy armor."
+  },
+  {
+    "name": "Eternal Ice",
+    "type": "non-mineral",
+    "description": "This cold white-blue block of ice resist high temperatures, being unable to melt in normal conditions.",
+    "value": "500",
+    "weapon": "Used to craft cold damage dealing weapons, such as the frost brand.",
+    "other": "Used to craft cold damage dealing magic items, such as the staff of frost."
+  },
+  {
+    "name": "Ignum",
+    "type": "non-mineral",
+    "description": "This black semi-translucent stone have some lava-like glowing and flowing inside of it.",
+    "value": "500",
+    "weapon": "Used to craft fire damage dealing weapons, such as the flame tongue."
+  },
+  {
+    "name": "Infernal Leather",
+    "type": "non-mineral",
+    "description": "A reddish hard leather created in the infernal planes.",
+    "value": "750",
+    "armor": "Used to craft an armor of fire resistance (leather or studded leather)."
+  },
+  {
+    "name": "Leafweave",
+    "type": "non-mineral",
+    "description": "Alchemically processed leaves that are hard as leather, used also as camouflage.",
+    "value": "100",
+    "other": "Used to craft the boots of elvenkind and the cloak of elvenkind."
+  },
+  {
+    "name": "Obsidian",
+    "type": "non-mineral",
+    "description": "This black to deep purple glass-like stone is known to be very sharp.",
+    "value": "250",
+    "armor": "While wearing a medium or heavy armor (non hide) made with obsidian, when an enemy tries to grapple you, it takes 1d4 slashing damage.",
+    "weapons": "Used for crafting the sword of sharpness."
+  },
+  {
+    "name": "Shadowfell Linen",
+    "type": "non-mineral",
+    "description": "A dark and purple linen found in the shadowfell.",
+    "value": "750",
+    "armor": "Used to craft an armor of psychic resistance (leather or studded leater)."
+  },
+  {
+    "name": "Spiritual wood",
+    "type": "non-mineral",
+    "description": "This cyan-like wood has a natural connection with the magic.",
+    "value": "250",
+    "armor": "Replaces the metal of any medium or heavy armor. While wearing an spiritual wood armor, you gain a +3 bonus to concentration checks to maintain a spell."
+  }
+]

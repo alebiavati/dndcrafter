@@ -13,9 +13,8 @@
   },
   "accounts": {
     "service": {
-      "address": "f8d6e0586b0a20c7",
-      "keys": "f2039ac0e7bc911f937b1c2ad1f252a32456009be4cb812e93e90c873b17cf49",
-      "privateKey": "f2039ac0e7bc911f937b1c2ad1f252a32456009be4cb812e93e90c873b17cf49",
+      "address": "$FLOW_ADDRESS",
+      "keys": "$FLOW_PRIVATE_KEY",
       "chain": "flow-emulator"
     }
   },
@@ -27,11 +26,5 @@
     "emulator": {
       "service": ["GoldToken", "Profile"]
     }
-  },
-  "devWallet": {
-    "accessNode": {
-      "endpoint": "http://localhost:8080"
-    },
-    "port": 8700
   }
 }

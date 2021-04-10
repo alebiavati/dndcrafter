@@ -4,35 +4,20 @@ import * as fcl from "@onflow/fcl";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUser } from "../features/auth/reducer";
-// import { fetchGold } from "../features/gold/reducer";
-import { fetchProfile, selectProfile } from "../features/profile/reducer";
 
 export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   useEffect(
     () =>
       fcl.currentUser().subscribe((user) => {
-        console.log(user);
-        if (user.addr) {
-          dispatch(fetchProfile(user.addr));
-          // dispatch(fetchGold(user.addr));
-        }
-
         dispatch(setUser(user));
       }),
     [dispatch]
   );
 
   const user = useSelector(selectUser);
-  const profile = useSelector(selectProfile);
 
-  if (user.loggedIn) {
-    if (profile) {
-      return children;
-    } else {
-      return <Text>Loading profile from blockchain...</Text>;
-    }
-  } else {
+  if (!user.loggedIn) {
     return (
       <>
         <HStack spacing="10px">
@@ -46,4 +31,25 @@ export function AuthProvider({ children }) {
       </>
     );
   }
+
+  return (
+    <Box>
+      <HStack spacing="5px" mb="1rem">
+        <Box>
+          <Text>
+            Logged in as <strong>{user.name ? user.name : user.addr}</strong>
+          </Text>
+        </Box>
+        <Box>
+          <Text>
+            • Not you?{" "}
+            <Button onClick={fcl.unauthenticate} variant="link">
+              Log Out
+            </Button>
+          </Text>
+        </Box>
+      </HStack>
+      {children}
+    </Box>
+  );
 }

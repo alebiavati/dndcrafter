@@ -1,16 +1,48 @@
-import { Box, Text, Center } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+import { Box, HStack, Text } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectBalance, selectBalanceLoading } from "../features/gold/reducer";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchBalance,
+  setupVault,
+  selectBalance,
+  selectBalanceLoading,
+  selectSettingUpVault,
+} from "../features/balance/reducer";
 
 export function Balance() {
+  const dispatch = useDispatch();
   const balanceLoading = useSelector(selectBalanceLoading);
   const balance = useSelector(selectBalance);
+  const settingUpVault = useSelector(selectSettingUpVault);
+
+  useEffect(() => {
+    dispatch(fetchBalance());
+  }, [dispatch]);
 
   return (
-    <Center mt="20px">
-      <Box>{balanceLoading ? <Spinner /> : <Text>Gold: {balance}</Text>}</Box>
-    </Center>
+    <HStack spacing="10px">
+      <Box>
+        <Text>Gold:</Text>
+      </Box>
+      <Box>{balanceLoading ? <Spinner /> : <Text>{balance}</Text>}</Box>
+      {typeof balance === "string" && (
+        <Box>
+          <Button
+            onClick={() => dispatch(setupVault())}
+            disabled={settingUpVault}
+          >
+            {settingUpVault ? (
+              <>
+                Setting up vault <Spinner />
+              </>
+            ) : (
+              "Set up Vault"
+            )}
+          </Button>
+        </Box>
+      )}
+    </HStack>
   );
 }
